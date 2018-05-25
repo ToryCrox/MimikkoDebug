@@ -1,0 +1,29 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion configs.compileSdkVersion
+    defaultConfig {
+        applicationId "com.mimikko.mimikkoui.debug"
+        minSdkVersion configs.miniSdkVersion
+        targetSdkVersion configs.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libraries.appcompat
+    implementation libraries.design
+    implementation libraries.constraintLayout
+
+    implementation libraries.stetho
+    implementation libraries.stethoOkhttp3
+}
