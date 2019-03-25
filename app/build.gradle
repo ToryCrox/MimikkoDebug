@@ -2,14 +2,31 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion configs.compileSdkVersion
+
+
+    signingConfigs {
+        release {
+            storeFile file("debug.jks")
+            storePassword '123456'
+            keyAlias 'debug'
+            keyPassword '123456'
+        }
+    }
     defaultConfig {
         applicationId "com.mimikko.mimikkoui.debug"
         minSdkVersion configs.miniSdkVersion
         targetSdkVersion configs.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
+        signingConfig signingConfigs.release
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    buildTypes {
+        release {
+        }
+    }
+
 }
 
 dependencies {
